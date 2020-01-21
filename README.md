@@ -9,5 +9,5 @@ Codes and notebooks related to generating homophilic networks and their properti
 
 **License**: <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public License 3.0 </a>
 
-[![Binder](https://notebooks.gesis.org/binder/badge.svg)](https://notebooks.gesis.org/binder/v2/gh/gesiscss/compsoc/master)
+[![Binder](https://notebooks.gesis.org/binder/badge.svg)](https://notebooks.gesis.org/binder/v2/gh/gesiscss/HomophilyNtwNotebooks/master)
 
