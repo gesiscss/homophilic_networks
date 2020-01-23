@@ -1,0 +1,13 @@
+name: HomophilyNtwNotebooks_env
+channels:
+  - defaults
+  - conda-forge
+  - ostrokach-forge
+  - pkgw-forge
+dependencies:
+  - python
+  - matplotlib
+  - numpy
+  - pandas
+  - networkx
+  - random
