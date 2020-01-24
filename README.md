@@ -1,7 +1,7 @@
 # Notebooks for Social Network Analysis
 Codes and notebooks related to generating homophilic networks and their properties 
 
-**Authors**: <a href='https://www.gesis.org/person/fariba.karimi'>Fariba Karimi</a>, GESIS - Leibniz Institute for the Social Sciences
+**Authors**: <a href='https://www.gesis.org/person/fariba.karimi'>Fariba Karimi</a>, <a href='https://www.gesis.org/person/haiko.lietz'>Haiko Lietz</a>, GESIS - Leibniz Institute for the Social Sciences
 
 **Version Date**: 15 January 2020
 
