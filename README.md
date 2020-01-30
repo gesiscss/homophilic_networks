@@ -1,13 +1,11 @@
-# Notebooks for Social Network Analysis
-Codes and notebooks related to generating homophilic networks and their properties 
+# Homophilic Networks
 
-**Authors**: <a href='https://www.gesis.org/person/fariba.karimi'>Fariba Karimi</a>, <a href='https://www.gesis.org/person/haiko.lietz'>Haiko Lietz</a>, GESIS - Leibniz Institute for the Social Sciences
+**Author**: <a href='https://www.gesis.org/person/fariba.karimi'>Fariba Karimi</a>
 
 **Version Date**: 15 January 2020
 
-**Description**: Toolkits for Network Analysis and Computational Social Science. Start it by clicking on the "launch binder" button and opening the index.ipynb notebook.
+**Description**: Codes and notebooks related to generating homophilic networks and their properties.
 
-**License**: <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public License 3.0 </a>
+**License**: <a href='https://creativecommons.org/licenses/by/4.0/'>Creative Commons (CC BY 4.0)</a>
 
-[![Binder](https://notebooks.gesis.org/binder/badge.svg)](https://notebooks.gesis.org/binder/v2/gh/gesiscss/HomophilyNtwNotebooks/master)
-
+[![Binder](https://notebooks.gesis.org/binder/badge.svg)](https://notebooks.gesis.org/binder/v2/gh/gesiscss/homophilic_networks/master)
