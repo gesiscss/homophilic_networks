@@ -2,7 +2,7 @@
 
 **Author**: <a href='https://www.gesis.org/person/fariba.karimi'>Fariba Karimi</a>
 
-**Version Date**: 15 January 2020
+**Version Date**: 09 June 2020
 
 **Description**: Codes and notebooks related to generating homophilic networks and their properties.
 
