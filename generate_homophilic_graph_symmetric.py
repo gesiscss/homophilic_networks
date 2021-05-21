@@ -56,15 +56,13 @@ def homophilic_ba_graph(N, m , minority_fraction, homophily):
 
     minority = int(minority_fraction * N)
 
-    minority_nodes = random.sample(range(N),minority)
-    node_attribute = {}
+    minority_nodes = set(random.sample(range(N),minority))
+    minority_mask = [node in minority_nodes for node in range(N)]
     for n in range(N):
         if n in minority_nodes:
             G.add_node(n , color = 'red')
-            node_attribute[n] = 'minority'
         else:
             G.add_node(n , color = 'blue')
-            node_attribute[n] = 'majority'
 
 
 
@@ -72,9 +70,9 @@ def homophilic_ba_graph(N, m , minority_fraction, homophily):
     dist = defaultdict(int) #distance between nodes
 
     for n1 in range(N):
-        n1_attr = node_attribute[n1]
+        n1_attr = minority_mask[n1]
         for n2 in range(N):
-            n2_attr = node_attribute[n2]
+            n2_attr = minority_mask[n2]
             if n1_attr == n2_attr:
                 dist[(n1,n2)] = 1 - homophily # higher homophily, lower distance
             else:
