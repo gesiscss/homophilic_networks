@@ -18,7 +18,7 @@ def homophilic_ba_graph(N, m , minority_fraction, homophily):
 
     A graph of n nodes is grown by attaching new nodes each with m
     edges that are preferentially attached to existing nodes with high
-    degree. The connections are established by linking probability which 
+    degree. The connections are established by linking probability which
     depends on the connectivity of sites and the homophily(similarities).
     homophily varies ranges from 0 to 1.
 
@@ -51,8 +51,6 @@ def homophilic_ba_graph(N, m , minority_fraction, homophily):
     .. [1] A. L. Barabasi and R. Albert "Emergence of scaling in
        random networks", Science 286, pp 509-512, 1999.
     """
-
-
 
     G = nx.Graph()
 
@@ -90,7 +88,7 @@ def homophilic_ba_graph(N, m , minority_fraction, homophily):
     while source < N:
 
         targets = _pick_targets(G,source,target_list,dist,m)
-        
+
         if targets != set(): #if the node does  find the neighbor
             G.add_edges_from(zip([source]*m,targets))
 
@@ -100,12 +98,12 @@ def homophilic_ba_graph(N, m , minority_fraction, homophily):
     return G
 
 def _pick_targets(G,source,target_list,dist,m):
-    
+
     target_prob_dict = {}
     for target in target_list:
         target_prob = (1-dist[(source,target)])* (G.degree(target)+0.00001)
         target_prob_dict[target] = target_prob
-        
+
     prob_sum = sum(target_prob_dict.values())
 
     targets = set()
@@ -131,9 +129,3 @@ def _pick_targets(G,source,target_list,dist,m):
 
 if __name__ == '__main__':
     graph = homophilic_ba_graph(N = 100, m = 2 , minority_fraction = 0.1, homophily= 1)
-
-
-
-
-
-
