@@ -58,12 +58,8 @@ def homophilic_ba_graph(N, m , minority_fraction, homophily):
 
     minority_nodes = set(random.sample(range(N),minority))
     minority_mask = [node in minority_nodes for node in range(N)]
-    for n in range(N):
-        if n in minority_nodes:
-            G.add_node(n , color = 'red')
-        else:
-            G.add_node(n , color = 'blue')
-
+    G.add_nodes_from([(node, {"color": "red" if node in minority_nodes else "blue"})\
+        for node in range(N)])
 
 
     #create homophilic distance ### faster to do it outside loop ###
