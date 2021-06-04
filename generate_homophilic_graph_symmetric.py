@@ -18,7 +18,7 @@ def homophilic_ba_graph(N, m , minority_fraction, homophily):
 
     A graph of n nodes is grown by attaching new nodes each with m
     edges that are preferentially attached to existing nodes with high
-    degree. The connections are established by linking probability which 
+    degree. The connections are established by linking probability which
     depends on the connectivity of sites and the homophily(similarities).
     homophily varies ranges from 0 to 1.
 
@@ -52,45 +52,21 @@ def homophilic_ba_graph(N, m , minority_fraction, homophily):
        random networks", Science 286, pp 509-512, 1999.
     """
 
-
-
     G = nx.Graph()
 
     minority = int(minority_fraction * N)
 
-    minority_nodes = random.sample(range(N),minority)
-    node_attribute = {}
-    for n in range(N):
-        if n in minority_nodes:
-            G.add_node(n , color = 'red')
-            node_attribute[n] = 'minority'
-        else:
-            G.add_node(n , color = 'blue')
-            node_attribute[n] = 'majority'
-
-
-
-    #create homophilic distance ### faster to do it outside loop ###
-    dist = defaultdict(int) #distance between nodes
-
-    for n1 in range(N):
-        n1_attr = node_attribute[n1]
-        for n2 in range(N):
-            n2_attr = node_attribute[n2]
-            if n1_attr == n2_attr:
-                dist[(n1,n2)] = 1 - homophily # higher homophily, lower distance
-            else:
-                dist[(n1,n2)] = homophily
-
-
+    minority_nodes = set(random.sample(range(N),minority))
+    minority_mask = [node in minority_nodes for node in range(N)]
+    G.add_nodes_from([(node, {"color": "red" if node in minority_nodes else "blue"})\
+        for node in range(N)])
 
     target_list=list(range(m))
     source = m #start with m nodes
 
     while source < N:
+        targets = _pick_targets(G,source,target_list,minority_mask,homophily,m)
 
-        targets = _pick_targets(G,source,target_list,dist,m)
-        
         if targets != set(): #if the node does  find the neighbor
             G.add_edges_from(zip([source]*m,targets))
 
@@ -99,13 +75,14 @@ def homophilic_ba_graph(N, m , minority_fraction, homophily):
 
     return G
 
-def _pick_targets(G,source,target_list,dist,m):
-    
+def _pick_targets(G,source,target_list,minority_mask,homophily,m):
+
     target_prob_dict = {}
     for target in target_list:
-        target_prob = (1-dist[(source,target)])* (G.degree(target)+0.00001)
+        target_prob = homophily if minority_mask[source] == minority_mask[target] else 1 - homophily
+        target_prob *= (G.degree(target)+0.00001)
         target_prob_dict[target] = target_prob
-        
+
     prob_sum = sum(target_prob_dict.values())
 
     targets = set()
@@ -131,9 +108,3 @@ def _pick_targets(G,source,target_list,dist,m):
 
 if __name__ == '__main__':
     graph = homophilic_ba_graph(N = 100, m = 2 , minority_fraction = 0.1, homophily= 1)
-
-
-
-
-
-
